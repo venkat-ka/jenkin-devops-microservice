@@ -52,7 +52,7 @@ pipeline {
 			steps{
 				//"docker build -t venkatkrish/jenkcurrency-exchange:$env.BUILD_TAG"
 				script{
-					dockerImag = docker.build("venkatkrish/jenkcurrency-exchange:{$env.BUILD_TAG}")
+					dockerImag = docker.build("venkatkrish/jenkcurrency-exchange:${env.BUILD_TAG}")
 				}
 			}
 		}
