@@ -1,16 +1,20 @@
 pipeline {
-	//agent any
-	agent{
-		docker {
-			image 'node:18.7'
-		}
-	}
+	agent any
+	//agent{
+//		docker {
+//			image 'node:18.7'
+//		}
+//	}
 	stages{
 		stage('Build'){
 			steps{
-				sh 'node --version' 
+				
 				echo "Build"
-			
+				echo "path - $env.PATH"
+				echo "buildnumber - $env.BUILD_NUMBER"				
+				echo "build tag - $env.BUILD_TAG"
+				echo "jenkinurl - $env.JENKINS_URL"
+				echo "branch name -  $env.BRANCH_NAME"
 			}
 		}
 		stage('Test'){
