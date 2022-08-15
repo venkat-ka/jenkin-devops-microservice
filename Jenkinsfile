@@ -60,7 +60,7 @@ pipeline {
 			steps{
 				//"docker build -t venkatkrish/jenkcurrency-exchange:$env.BUILD_TAG"
 				script{
-						dockerImag.withRegistry('','dockerhub'){
+						docker.withRegistry('','dockerhub'){
 							dockerImag.push()
 							dockerImag.push('latest') 
 					}
