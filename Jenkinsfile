@@ -67,12 +67,7 @@ pipeline {
 				}
 			}
 		}
-		stage('Push Docker Image'){
-			steps{
-				sh "mvn failsafe:integration-test failsafe:verify"
-			
-			}
-		}
+		
 	} 
 	
 	post {
