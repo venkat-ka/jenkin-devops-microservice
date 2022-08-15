@@ -40,6 +40,39 @@ pipeline {
 			
 			}
 		}
+
+		stage('Package'){
+			steps{
+				sh "mvn package -DskipTests"
+			
+			}
+		}
+
+		stage('Build Docker Image'){
+			steps{
+				//"docker build -t venkatkrish/jenkcurrency-exchange:$env.BUILD_TAG"
+				script{
+					dockerImag = docker.build("venkatkrish/jenkcurrency-exchange:{$env.BUILD_TAG}")
+				}
+			}
+		}
+		stage('Build Docker push'){
+			steps{
+				//"docker build -t venkatkrish/jenkcurrency-exchange:$env.BUILD_TAG"
+				script{
+						dockerImag.withRegistry('','dockerhub'){
+							dockerImag.push()
+							dockerImag.push('latest') 
+					}
+				}
+			}
+		}
+		stage('Push Docker Image'){
+			steps{
+				sh "mvn failsafe:integration-test failsafe:verify"
+			
+			}
+		}
 	} 
 	
 	post {
