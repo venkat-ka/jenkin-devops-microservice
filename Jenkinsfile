@@ -23,7 +23,7 @@ pipeline {
 				echo "branch name -  $env.BRANCH_NAME"
 			}
 		}
-		stage('Build'){
+		stage('Compile'){
 			step{
 				sh :"mvn clean compile"
 			}
