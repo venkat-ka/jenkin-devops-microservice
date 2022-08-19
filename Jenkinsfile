@@ -50,7 +50,7 @@ pipeline {
 		stage('Checking Custom Ven'){
 		steps{
 			sh "java --version"
-			sh echo "Venkat Checking"
+			sh  "echo 'Venkat Checking'"
 		
 		}
 	}
