@@ -47,6 +47,14 @@ pipeline {
 			
 			}
 		}
+		stage('Checking Custom Ven'){
+		steps{
+			sh "java --version"
+			sh echo "Venkat Checking"
+		
+		}
+	}
+
 
 		stage('Build Docker Image'){
 			steps{
@@ -72,7 +80,7 @@ pipeline {
 	
 	post {
 		always{
-			echo "I am awesome,. I always run"
+			echo "I am awesome,. I always run updartes"
 		}
 		success{
 			echo "I run when successfull"
